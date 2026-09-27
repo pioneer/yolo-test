@@ -5,7 +5,30 @@ import sys
 from ultralytics.cfg import parse_key_value_pair
 from ultralytics.solutions.streamlit_inference import Inference
 
-DEFAULT_CLASSES = ["person", "spoon", "cell phone", "cup"]
+DEFAULT_CLASSES = [
+    "person",
+    "cell phone",
+    "cup",
+    "bottle",
+    "spoon",
+    "fork",
+    "knife",
+    "bowl",
+    "chair",
+    "couch",
+    "bed",
+    "dining table",
+    "tv",
+    "laptop",
+    "mouse",
+    "keyboard",
+    "remote",
+    "book",
+    "clock",
+    "refrigerator",
+    "microwave",
+    "sink",
+]
 
 
 class App(Inference):
