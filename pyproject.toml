@@ -1,0 +1,22 @@
+[project]
+name = "yolo-test"
+version = "0.1.0"
+description = "Local Ultralytics YOLO live inference test on an NVIDIA GPU"
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "invoke",
+    "streamlit",
+    "torch==2.14.0",
+    "torchvision==0.29.0",
+    "ultralytics",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
