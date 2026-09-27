@@ -1,5 +1,6 @@
 import os
 import platform
+import shlex
 from pathlib import Path
 
 from invoke import Exit, task
@@ -102,13 +103,15 @@ def check(c):
     print("All checks passed.")
 
 
-@task
-def gui(c):
+@task(help={"model": f"Model file in the project dir (default: {MODEL.name})"})
+def gui(c, model=MODEL.name):
     """Launch the Ultralytics Streamlit live inference UI (app.py: custom default classes)."""
+    if not (ROOT / model).is_file():
+        raise Exit(f"ERROR: model not found: {ROOT / model} (run: uv run inv download --model {model})", code=1)
     env = {**os.environ, "CUDA_VISIBLE_DEVICES": "0"}
     with c.cd(str(ROOT)):
         # Same command `yolo solutions inference` runs, but with app.py as the script.
-        c.run(f'streamlit run app.py --server.headless true model="{MODEL.name}"', env=env, pty=True)
+        c.run(f"streamlit run app.py --server.headless true {shlex.quote(f'model={model}')}", env=env, pty=True)
 
 
 @task

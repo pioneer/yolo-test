@@ -18,6 +18,8 @@ uv run inv gui       # Ultralytics Streamlit live inference UI
 
 ```sh
 uv run inv download --model yolo26s.pt  # fetch another Ultralytics model
+uv run inv download --model yolo26n-objv1-150.pt  # Objects365 (365 classes)
+uv run inv gui --model yolo26n-objv1-150.pt       # UI with another local model
 uv run inv gpu      # Python/PyTorch/CUDA/cuDNN/GPU info; fails if CUDA is unavailable
 uv run inv smoke    # one YOLO inference on a blank 640x640 image with device=0
 uv run inv nvidia   # nvidia-smi
