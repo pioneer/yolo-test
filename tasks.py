@@ -104,10 +104,11 @@ def check(c):
 
 @task
 def gui(c):
-    """Launch the built-in Ultralytics Streamlit live inference UI."""
+    """Launch the Ultralytics Streamlit live inference UI (app.py: custom default classes)."""
     env = {**os.environ, "CUDA_VISIBLE_DEVICES": "0"}
     with c.cd(str(ROOT)):
-        c.run(f'yolo solutions inference model="{MODEL.name}"', env=env, pty=True)
+        # Same command `yolo solutions inference` runs, but with app.py as the script.
+        c.run(f'streamlit run app.py --server.headless true model="{MODEL.name}"', env=env, pty=True)
 
 
 @task

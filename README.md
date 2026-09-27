@@ -26,3 +26,6 @@ uv run inv --list   # list all tasks
 ```
 
 `uv run inv sync` is also available and runs `uv sync`.
+
+`inv gui` runs the built-in Ultralytics UI through [app.py](app.py), which only changes the
+pre-selected classes (`DEFAULT_CLASSES`). Any model class can still be picked in the dropdown.
